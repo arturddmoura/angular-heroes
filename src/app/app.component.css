@@ -1,0 +1,19 @@
+.side-nav {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #555;
+}
+
+.title {
+  padding: 20px;
+}
+
+.nav-link {
+  padding-left: 20px;
+  text-decoration: none;
+}
+
+.nav-link:visited {
+  text-decoration: none;
+  color: white;
+}

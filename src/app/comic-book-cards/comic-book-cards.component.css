@@ -1,0 +1,33 @@
+.card {
+  height: 100%;
+  max-width: 400px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+.image {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  max-width: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.form-field {
+  margin: 20px;
+  width: 300px;
+}
+
+.card-actions {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto; /* Push the card-actions to the bottom */
+  margin-left: auto;
+  justify-content: flex-end; /* Align items to the right */
+}

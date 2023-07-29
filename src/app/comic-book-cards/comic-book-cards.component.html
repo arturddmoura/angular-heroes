@@ -1,0 +1,46 @@
+<mat-form-field class="form-field">
+  <mat-label>Search...</mat-label>
+  <input matInput type="text" [(ngModel)]="value" />
+  <button
+    *ngIf="value"
+    matSuffix
+    mat-icon-button
+    aria-label="Clear"
+    (click)="filterResults(''); value = ''"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+  <button
+    matSuffix
+    mat-icon-button
+    aria-label="Search"
+    (click)="filterResults(value)"
+  >
+    <mat-icon>search</mat-icon>
+  </button>
+</mat-form-field>
+
+<div class="card-wrapper">
+  <div *ngFor="let comic of filteredComicBooks">
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-card-title>{{ comic.title }}</mat-card-title>
+        <mat-card-subtitle>Issue: {{ comic.issueNumber }}</mat-card-subtitle>
+      </mat-card-header>
+      <img
+        mat-card-image
+        class="image"
+        src="{{ comic.thumbnail }}"
+        alt="Photo of {{ comic.title }}, issue: {{ comic.issueNumber }}"
+      />
+      <mat-card-content>
+        <p>
+          {{ comic.description }}
+        </p>
+      </mat-card-content>
+      <mat-card-actions class="card-actions">
+        <button mat-button (click)="deleteItem(comic.id)">DELETE</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
