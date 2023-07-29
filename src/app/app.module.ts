@@ -15,9 +15,16 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { ComicBookDialogComponent } from './comic-book-cards/comic-book-dialog/comic-book-dialog.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ComicBookHeroesComponent } from './comic-book-heroes/comic-book-heroes.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
-  declarations: [AppComponent, LoginDialogComponent, ComicBookDialogComponent],
+  declarations: [
+    AppComponent,
+    LoginDialogComponent,
+    ComicBookDialogComponent,
+    ComicBookHeroesComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -31,6 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatSidenavModule,
     MatTabsModule,
     FormsModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

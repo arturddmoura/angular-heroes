@@ -34,7 +34,6 @@ export class ComicBookCardsComponent implements OnInit {
 
   value = '';
   comicBooks: ComicBook[] = [];
-  comicBooks$: Observable<ComicBook[]> = of();
 
   constructor(
     public comicDialog: MatDialog,

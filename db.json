@@ -22,5 +22,66 @@
       "id": 3
     }
   ],
-  "heroes": []
+  "heroes": [
+    {
+      "id": 1,
+      "name": "Superman",
+      "alias": "Clark Kent",
+      "publisher": "DC Comics"
+    },
+    {
+      "id": 2,
+      "name": "Spider-Man",
+      "alias": "Peter Parker",
+      "publisher": "Marvel Comics"
+    },
+    {
+      "id": 3,
+      "name": "Wonder Woman",
+      "alias": "Diana Prince",
+      "publisher": "DC Comics"
+    },
+    {
+      "id": 4,
+      "name": "Batman",
+      "alias": "Bruce Wayne",
+      "publisher": "DC Comics"
+    },
+    {
+      "id": 5,
+      "name": "Iron Man",
+      "alias": "Tony Stark",
+      "publisher": "Marvel Comics"
+    },
+    {
+      "id": 6,
+      "name": "Captain America",
+      "alias": "Steve Rogers",
+      "publisher": "Marvel Comics"
+    },
+    {
+      "id": 7,
+      "name": "Wonder Man",
+      "alias": "Simon Williams",
+      "publisher": "Marvel Comics"
+    },
+    {
+      "id": 8,
+      "name": "Harley Quinn",
+      "alias": "Dr. Harleen Quinzel",
+      "publisher": "DC Comics"
+    },
+    {
+      "id": 9,
+      "name": "Thor",
+      "alias": "Thor Odinson",
+      "publisher": "Marvel Comics"
+    },
+    {
+      "id": 10,
+      "name": "Black Widow",
+      "alias": "Natasha Romanoff",
+      "publisher": "Marvel Comics"
+    }
+  ]
 }
