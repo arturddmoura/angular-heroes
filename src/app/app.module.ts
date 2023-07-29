@@ -12,9 +12,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTabsModule } from '@angular/material/tabs';
+import { ComicBookDialogComponent } from './comic-book-cards/comic-book-dialog/comic-book-dialog.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, LoginDialogComponent],
+  declarations: [AppComponent, LoginDialogComponent, ComicBookDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -26,6 +28,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatIconModule,
     MatSidenavModule,
     MatTabsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

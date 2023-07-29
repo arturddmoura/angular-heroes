@@ -6,6 +6,14 @@
 
 .title {
   padding: 20px;
+  text-decoration: none;
+  color: white;
+}
+
+.title-link,
+.title-link:visited {
+  text-decoration: none;
+  color: white;
 }
 
 .nav-link {

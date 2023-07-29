@@ -19,6 +19,14 @@
     <mat-icon>search</mat-icon>
   </button>
 </mat-form-field>
+<button
+  mat-fab
+  color="primary"
+  aria-label="Add comic book"
+  (click)="initNewItem(); openDialog()"
+>
+  <mat-icon>add</mat-icon>
+</button>
 
 <div class="card-wrapper">
   <div *ngFor="let comic of filteredComicBooks">

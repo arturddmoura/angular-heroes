@@ -1,0 +1,25 @@
+<div mat-dialog-content class="dialog">
+  <div *ngIf="item">
+    <h2>Add comic book</h2>
+    <mat-form-field class="form-field">
+      <mat-label>Enter the title</mat-label>
+      <input [(ngModel)]="item.title" matInput />
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <mat-label>Enter the issue</mat-label>
+      <input [(ngModel)]="item.issueNumber" matInput />
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <mat-label>Enter the descrition</mat-label>
+      <input [(ngModel)]="item.description" matInput />
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <mat-label>Enter the image link</mat-label>
+      <input [(ngModel)]="item.thumbnail" matInput />
+    </mat-form-field>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Add</button>
+    </mat-dialog-actions>
+  </div>
+</div>
