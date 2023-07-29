@@ -1,35 +1,38 @@
-<mat-form-field class="form-field">
-  <mat-label>Search...</mat-label>
-  <input matInput type="text" [(ngModel)]="value" />
+<div class="topbar">
+  <mat-form-field class="form-field">
+    <mat-label>Search...</mat-label>
+    <input matInput type="text" [(ngModel)]="value" />
+    <button
+      *ngIf="value"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="filterResults(''); value = ''"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+    <button
+      matSuffix
+      mat-icon-button
+      aria-label="Search"
+      (click)="filterResults(value)"
+    >
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
   <button
-    *ngIf="value"
-    matSuffix
-    mat-icon-button
-    aria-label="Clear"
-    (click)="filterResults(''); value = ''"
+    class="button"
+    mat-fab
+    color="primary"
+    aria-label="Add comic book"
+    (click)="openDialog()"
   >
-    <mat-icon>close</mat-icon>
+    <mat-icon>add</mat-icon>
   </button>
-  <button
-    matSuffix
-    mat-icon-button
-    aria-label="Search"
-    (click)="filterResults(value)"
-  >
-    <mat-icon>search</mat-icon>
-  </button>
-</mat-form-field>
-<button
-  mat-fab
-  color="primary"
-  aria-label="Add comic book"
-  (click)="initNewItem(); openDialog()"
->
-  <mat-icon>add</mat-icon>
-</button>
+</div>
 
 <div class="card-wrapper">
-  <div *ngFor="let comic of filteredComicBooks">
+  <div *ngFor="let comic of comicBooks">
     <mat-card class="card">
       <mat-card-header>
         <mat-card-title>{{ comic.title }}</mat-card-title>
@@ -47,7 +50,7 @@
         </p>
       </mat-card-content>
       <mat-card-actions class="card-actions">
-        <button mat-button (click)="deleteItem(comic.id)">DELETE</button>
+        <button mat-button (click)="openDialog(comic)">Options</button>
       </mat-card-actions>
     </mat-card>
   </div>

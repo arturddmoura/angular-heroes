@@ -1,8 +1,7 @@
 import { NgFor } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { comicBooks, ComicBook } from './comic-books-mock-data';
 import { MatIconModule } from '@angular/material/icon';
 import { NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -10,6 +9,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialog } from '@angular/material/dialog';
 import { ComicBookDialogComponent } from './comic-book-dialog/comic-book-dialog.component';
+import { ComicBooksService } from '../services/comic-books.service';
+import { ComicBook } from '../models/comicBooks';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-comic-book-cards',
@@ -27,52 +29,55 @@ import { ComicBookDialogComponent } from './comic-book-dialog/comic-book-dialog.
     MatIconModule,
   ],
 })
-export class ComicBookCardsComponent {
-  @Input() item?: ComicBook;
+export class ComicBookCardsComponent implements OnInit {
+  @Input() comicToAdd?: ComicBook;
 
   value = '';
-  comicBooks = comicBooks;
-  filteredComicBooks: ComicBook[] = [];
+  comicBooks: ComicBook[] = [];
+  comicBooks$: Observable<ComicBook[]> = of();
 
-  constructor(public comicDialog: MatDialog) {
-    this.comicBooks = comicBooks;
-    this.filteredComicBooks = this.comicBooks;
+  constructor(
+    public comicDialog: MatDialog,
+    private comicBooksService: ComicBooksService
+  ) {}
+
+  ngOnInit(): void {
+    this.comicBooksService
+      .getComicBooks()
+      .subscribe((result: ComicBook[]) => (this.comicBooks = result));
   }
 
   filterResults(text: string) {
     if (!text) {
-      this.filteredComicBooks = this.comicBooks;
+      this.comicBooksService
+        .getComicBooks()
+        .subscribe((result: ComicBook[]) => (this.comicBooks = result));
     }
 
-    this.filteredComicBooks = this.comicBooks.filter((comicBook) =>
+    this.comicBooks = this.comicBooks.filter((comicBook) =>
       comicBook.title?.toLowerCase().includes(text.toLowerCase())
     );
   }
 
-  deleteItem(id: number) {
-    this.comicBooks = this.comicBooks.filter((item) => item.id !== id);
-    this.filteredComicBooks = this.filteredComicBooks.filter(
-      (item) => item.id !== id
-    );
+  initNewComic() {
+    this.comicToAdd = new ComicBook();
   }
 
-  initNewItem() {
-    this.item = new ComicBook();
-    this.item.id = this.comicBooks.length + 1;
-  }
+  openDialog(comic?: ComicBook) {
+    if (comic) {
+      this.comicToAdd = comic;
+    } else {
+      this.initNewComic();
+    }
 
-  public addItem(item: ComicBook) {
-    this.comicBooks.push(item);
-    this.filteredComicBooks.push(item);
-  }
-
-  openDialog() {
     const dialogRef = this.comicDialog.open(ComicBookDialogComponent, {
-      data: this.item,
+      data: this.comicToAdd,
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
+    dialogRef.afterClosed().subscribe(() => {
+      this.comicBooksService
+        .getComicBooks()
+        .subscribe((result: ComicBook[]) => (this.comicBooks = result));
     });
   }
 }

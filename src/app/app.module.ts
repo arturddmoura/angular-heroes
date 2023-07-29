@@ -14,12 +14,14 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ComicBookDialogComponent } from './comic-book-cards/comic-book-dialog/comic-book-dialog.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, LoginDialogComponent, ComicBookDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatDialogModule,
     MatButtonModule,
